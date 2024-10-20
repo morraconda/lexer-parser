@@ -5,30 +5,30 @@ Parser (WIP) takes that list of tokens, checks whether it is valid, and if it
 is valid outputs it into Abstract Syntax Tree based on an LL(1) parse table
 that it is given.
 
-Usage: "make" to build
-"./test" to test
-"./main "[text]" to parse literal text (text must be in quotes)
+Usage: "make" to build <br>
+"./test" to test <br>
+"./main "[text]" to parse literal text (text must be in quotes) <br>
 DOESN'T WORK YET - "./main f [filename] to parse the context of a .txt file
 
-Example Lexer Inputs/Outputs:
-./main " count <- 0; while 6 > count do if true then count <- count + 1 else skip $ "
-Lexer Input: " count <- 0; while 6 > count do if true then count <- count + 1 else skip $ "
-Lexer Output: [id:'count', <-, num:'0', ;, while, num:'6', >, id:'count', do, if, true, then, id:'count', <-, id:'count', +, num:'1', else, skip, END]
-Lexer Error: none
+Example Lexer Inputs/Outputs: <br>
+./main " count <- 0; while 6 > count do if true then count <- count + 1 else skip $ " <br>
+Lexer Input: " count <- 0; while 6 > count do if true then count <- count + 1 else skip $ " <br>
+Lexer Output: [id:'count', <-, num:'0', ;, while, num:'6', >, id:'count', do, if, true, then, id:'count', <-, id:'count', +, num:'1', else, skip, END] <br>
+Lexer Error: none <br>
 
-Lexer Input: "count <- 0; while 6 > count do if true then count <- count + 1 else skip"
-Lexer Output: [id:'count', <-, num:'0', ;, while, num:'6', >, id:'count', do, if, true, then, id:'count', <-, id:'count', +, num:'1', else, skip]
-Lexer Error: ERR_NO_EOF
+Lexer Input: "count <- 0; while 6 > count do if true then count <- count + 1 else skip" <br>
+Lexer Output: [id:'count', <-, num:'0', ;, while, num:'6', >, id:'count', do, if, true, then, id:'count', <-, id:'count', +, num:'1', else, skip] <br>
+Lexer Error: ERR_NO_EOF <br>
 
-Lexer Input: "count <- 0; while 6 >% count do if true then count <- count + 1 else skip  "
-Lexer Output: [id:'count', <-, num:'0', ;, while, num:'6', >]
-Lexer Error: ERR_UNEXPECTED_CHAR
+Lexer Input: "count <- 0; while 6 >% count do if true then count <- count + 1 else skip  " <br>
+Lexer Output: [id:'count', <-, num:'0', ;, while, num:'6', >] <br>
+Lexer Error: ERR_UNEXPECTED_CHAR <br>
 
-Lexer Input: "aaaaaaa2bbbb123123123aaaaa$"
-Lexer Output: [id:'aaaaaaa', num:'2', id:'bbbb', num:'123123123', id:'aaaaa', END]
-Lexer Error: none
+Lexer Input: "aaaaaaa2bbbb123123123aaaaa$" <br>
+Lexer Output: [id:'aaaaaaa', num:'2', id:'bbbb', num:'123123123', id:'aaaaa', END] <br>
+Lexer Error: none <br>
 
-Lexer Input: "qwertyuiopasdfghjklzxcvbnm$"
-Lexer Output: [id:'qwertyuiopasdfg']
-Lexer Error: ERR_ID_TOO_LONG
+Lexer Input: "qwertyuiopasdfghjklzxcvbnm$" <br>
+Lexer Output: [id:'qwertyuiopasdfg'] <br>
+Lexer Error: ERR_ID_TOO_LONG <br>
 
